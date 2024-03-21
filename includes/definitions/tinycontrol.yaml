@@ -1,6 +1,6 @@
 os: tinycontrol
 text: 'Tinycontrol'
-type: sensor
+type: environment
 icon: tinycontrol
 group: tinycontrol
 discovery:
