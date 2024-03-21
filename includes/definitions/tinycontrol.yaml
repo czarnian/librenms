@@ -1,0 +1,9 @@
+os: tinycontrol
+text: 'Tinycontrol'
+type: sensor
+icon: tinycontrol
+group: tinycontrol
+discovery:
+    -
+        sysObjectID:
+            - .3.6.1.4.1.7616
