@@ -1,0 +1,656 @@
+SNMPv2-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+    MODULE-IDENTITY, OBJECT-TYPE, NOTIFICATION-TYPE,
+    TimeTicks, Counter32, snmpModules, mib-2, enterprises
+        FROM SNMPv2-SMI
+    DisplayString, TestAndIncr, TimeStamp
+
+
+
+        FROM SNMPv2-TC
+    MODULE-COMPLIANCE, OBJECT-GROUP, NOTIFICATION-GROUP
+        FROM SNMPv2-CONF;
+
+
+-- the System group
+--
+-- a collection of objects common to all managed systems.
+
+mib2   OBJECT IDENTIFIER ::= { mib-2 1 }
+
+sysDescr OBJECT-TYPE
+    SYNTAX      DisplayString (SIZE (0..255))
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+            "A textual description of the entity.  This value should
+            include the full name and version identification of
+            the system's hardware type, software operating-system,
+            and networking software."
+    ::= { mib2 1 }
+
+sysObjectID OBJECT-TYPE
+    SYNTAX      OBJECT IDENTIFIER
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+            "The vendor's authoritative identification of the
+            network management subsystem contained in the entity.
+            This value is allocated within the SMI enterprises
+            subtree (1.3.6.1.4.1) and provides an easy and
+            unambiguous means for determining `what kind of box' is
+            being managed.  For example, if vendor `Flintstones,
+            Inc.' was assigned the subtree 1.3.6.1.4.1.424242,
+            it could assign the identifier 1.3.6.1.4.1.424242.1.1
+            to its `Fred Router'."
+    ::= { mib2 2 }
+
+sysUpTime OBJECT-TYPE
+
+
+
+    SYNTAX      TimeTicks
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION
+            "The time (in hundredths of a second) since the
+            network management portion of the system was last
+            re-initialized."
+    ::= { system_moj 3 }
+
+
+sysName OBJECT-TYPE
+    SYNTAX      DisplayString (SIZE (0..255))
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+            "An administratively-assigned name for this managed
+            node.  By convention, this is the node's fully-qualified
+            domain name.  If the name is unknown, the value is
+            the zero-length string."
+    ::= { mib2 4 }
+
+
+-- the SNMP group
+--
+-- a collection of objects providing basic instrumentation and
+-- control of an SNMP entity.
+
+lk3_outs     OBJECT IDENTIFIER ::= { enterprises 7616 3 1 }
+
+out0 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1)
+    MAX-ACCESS read-write
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_outs 1 }
+
+out1 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1)
+    MAX-ACCESS read-write
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_outs 2 }
+    
+out2 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1)
+    MAX-ACCESS read-write
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_outs 3 }
+
+out3 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1)
+    MAX-ACCESS read-write
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_outs 4 }
+
+out4 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1)
+    MAX-ACCESS read-write
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_outs 5 }    
+    
+    
+out5 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1)
+    MAX-ACCESS read-write
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_outs 6 }
+
+pwm0 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1)
+    MAX-ACCESS read-write
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_outs 7 }
+    
+    
+pwm1 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1)
+    MAX-ACCESS read-write
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_outs 8 }
+
+pwm2 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1)
+    MAX-ACCESS read-write
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_outs 9 }
+    
+    
+pwm3 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1)
+    MAX-ACCESS read-write
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_outs 10 }    
+
+lk3_inpd     OBJECT IDENTIFIER ::= { enterprises 7616 3 2 }    
+
+
+inpd1 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_inpd 1 }
+    
+inpd2 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_inpd 2 }
+    
+inpd3 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_inpd 3 }
+    
+inpd4 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_inpd 4 }
+    
+    
+lk3_inpa     OBJECT IDENTIFIER ::= { enterprises 7616 3 3 } 
+
+
+inpa1 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_inpa 1 }    
+    
+inpa2 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_inpa 2 }  
+
+inpa3 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_inpa 3 }
+    
+inpa4 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_inpa 4 }     
+
+    
+inpa5 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_inpa 5 }
+    
+inpa6 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_inpa 6 } 
+ 
+vcc OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_inpa 7 }  
+    
+temp OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..1000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_inpa 8 } 
+    
+lk3_dsy     OBJECT IDENTIFIER ::= { enterprises 7616 3 4 }     
+    
+    
+    
+ds1 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 1 }     
+    
+ds2 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 2 }  
+
+ds3 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 3 }  
+    
+ds4 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 4 }  
+ds5 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 5 }  
+    
+ds6 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 6 }  
+    
+ds7 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 7 } 
+    
+ds8 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 8 }     
+    
+t1 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 9 }  
+    
+h1 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 10 } 
+    
+diff1 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 11 }  
+    
+diff2 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 12 }     
+    
+p1 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 13 }      
+
+co2 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 14 }      
+
+pm1 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 15 }  
+ 
+pm2 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 16 }   
+
+pm4 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 17 }      
+
+pm10 OBJECT-TYPE
+    SYNTAX      INTEGER (-1000..10000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_dsy 18 }      
+    
+lk3_power     OBJECT IDENTIFIER ::= { enterprises 7616 3 5 }    
+  
+power1 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_power 1 }   
+  
+power2 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_power 2 }   
+  
+power3 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_power 3 }   
+
+power4 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_power 4 }       
+    
+energy1 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_power 5 }   
+
+energy2 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_power 6 }
+energy3 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_power 7 }
+
+energy4 OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_power 8 }     
+    
+lk3_sdm     OBJECT IDENTIFIER ::= { enterprises 7616 3 6 } 
+
+sdm_V OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_sdm 1 }  
+
+sdm_I OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_sdm 2 } 
+ 
+sdm_AcP OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_sdm 3 }
+
+sdm_ApP OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_sdm 4 }  
+    
+sdm_ReP OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_sdm 5 }
+
+sdm_PF OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_sdm 6 }  
+    
+sdm_PA OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_sdm 7 } 
+
+sdm_F OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_sdm 8 }
+
+sdm_IAcE OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_sdm 9 } 
+ 
+sdm_EAcE OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_sdm 10 }    
+
+sdm_IReE OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_sdm 11 }
+    
+sdm_EReE OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_sdm 12 } 
+
+sdm_TAcE OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_sdm 13 } 
+
+sdm_TReE OBJECT-TYPE
+    SYNTAX      INTEGER (0..1000000)
+    MAX-ACCESS read-only
+    STATUS     current
+    DESCRIPTION
+            "The total number of messages delivered to the SNMP
+            entity from the transport service."
+    ::= { lk3_sdm 14 }                                            
+END
